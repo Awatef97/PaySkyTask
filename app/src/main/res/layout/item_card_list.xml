@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="4dp"
+    android:layout_margin="10dp"
+    app:cardBackgroundColor="#FFFFFF">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/normalTextViewStyle"
+            android:id="@+id/tvLabelCardNumber"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tvCardNumber"
+            android:text="@string/label_card_number"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/normalTextViewStyle"
+        android:id="@+id/tvCardNumber"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvLabelCardNumber"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="10dp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/normalTextViewStyle"
+            android:id="@+id/tvLabelCardHolder"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tvLabelCardNumber"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/tvCardHolder"
+            android:layout_marginTop="15dp"
+            android:text="@string/label_card_holder_name"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/normalTextViewStyle"
+            android:id="@+id/tvCardHolder"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/tvLabelCardHolder"
+            app:layout_constraintBottom_toBottomOf="@id/tvLabelCardHolder"
+            app:layout_constraintStart_toEndOf="@id/tvLabelCardHolder"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/normalTextViewStyle"
+            android:id="@+id/tvLabelExpireDate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tvLabelCardHolder"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/tvExpireDate"
+            android:layout_marginTop="15dp"
+            android:text="@string/label_expiration_date_text"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/normalTextViewStyle"
+            android:id="@+id/tvExpireDate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/tvLabelExpireDate"
+            app:layout_constraintBottom_toBottomOf="@id/tvLabelExpireDate"
+            app:layout_constraintStart_toEndOf="@id/tvLabelExpireDate"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="15dp"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvLabelBalance"
+            style="@style/normalTextViewStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/label_balance"
+            app:layout_constraintEnd_toStartOf="@id/tvBalance"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvExpireDate" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/normalTextViewStyle"
+            android:id="@+id/tvBalance"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/tvLabelBalance"
+            app:layout_constraintBottom_toBottomOf="@id/tvLabelBalance"
+            app:layout_constraintStart_toEndOf="@id/tvLabelBalance"
+            app:layout_constraintEnd_toEndOf="parent"/>
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivLogo"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintTop_toBottomOf="@id/tvLabelBalance"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="20dp"/>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnAddBalance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/ivLogo"
+        app:layout_constraintStart_toStartOf="@id/tvLabelCardNumber"
+        android:layout_marginTop="15dp"
+        android:text="@string/add_balance"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        android:drawableStart="@drawable/ic_add"
+        android:textAllCaps="false"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnRemove"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/btnAddBalance"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/remove_card"
+        app:layout_constraintBottom_toBottomOf="@id/btnAddBalance"
+        app:layout_constraintVertical_bias="0.0"
+        android:drawableStart="@drawable/ic_delete"
+        android:textAllCaps="false"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

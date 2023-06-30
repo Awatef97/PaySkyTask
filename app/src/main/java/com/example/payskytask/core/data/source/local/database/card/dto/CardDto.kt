@@ -13,7 +13,7 @@ data class CardDto(
     val expireDate: String,
     @ColumnInfo(name = "card_holder")
     val cardHolder: String,
-    val balance: Float = 0.00f,
+    val balance: Double = 0.00,
     val logo: String,
     val cvv: String,
 )

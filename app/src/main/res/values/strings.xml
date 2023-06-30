@@ -15,4 +15,12 @@
     <string name="msg_card_is_add">Card is added successfully</string>
     <string name="msg_some_thing_wrong_add_new_card">some thing went wrong.\nplease add new card </string>
     <string name="label_retry">Retry</string>
+    <string name="add_balance">Add Balance</string>
+    <string name="remove_card">Remove Card</string>
+    <string name="label_confirm_delete_card">Confirmation</string>
+    <string name="msg_confirm_delete_card">Are you sure you want to delete this card?</string>
+    <string name="label_ok">OK</string>
+    <string name="label_cancel">CANCEL</string>
+    <string name="label_balance">balance</string>
+    <string name="label_expiration_date_text">Expire Date</string>
 </resources>

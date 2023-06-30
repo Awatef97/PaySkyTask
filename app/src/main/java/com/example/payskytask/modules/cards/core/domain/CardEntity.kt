@@ -5,6 +5,6 @@ data class CardEntity(
     val expireDate: String,
     val cardHolder: String,
     val cvv: String,
-    val balance: Float = 0.00f,
+    val balance: Double = 0.00,
     val logo: String
 )

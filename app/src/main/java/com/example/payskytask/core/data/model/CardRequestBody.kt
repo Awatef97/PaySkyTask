@@ -4,7 +4,7 @@ data class CardRequestBody(
     val cardNumber: String,
     val expireDate: String,
     val cardHolder: String,
-    val balance: Float = 0.00f,
+    val balance: Double = 0.00,
     val logo: String,
     val cvv: String,
 )

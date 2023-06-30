@@ -14,7 +14,7 @@ interface CardDao {
     suspend fun insertCard(cardDto: CardDto)
 
     @Query("UPDATE $CARD_TABLE SET balance = :balance WHERE card_number = :cardNumber ")
-    suspend fun rechargeCard(cardNumber: String, balance: Float)
+    suspend fun rechargeCard(cardNumber: String, balance: Double)
 
     @Query("DELETE FROM $CARD_TABLE where card_number = :cardNumber")
     suspend fun removeCard(cardNumber: String)

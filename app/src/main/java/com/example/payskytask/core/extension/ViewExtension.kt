@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import android.text.Editable
 import android.text.InputFilter
 import android.text.SpannableStringBuilder
@@ -95,8 +96,39 @@ fun View.handleVisibility(isLoading: Boolean) =
     else this.visibility = View.GONE
 
 fun Context.isInternetAvailable(): Boolean {
-    val connectivityManager =
-        this.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-    val networkInfo = connectivityManager.activeNetworkInfo
-    return networkInfo != null && networkInfo.isConnected
+    val connectivityManager = this.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager?
+    if (connectivityManager != null) {
+        val networkCapabilities = connectivityManager.activeNetwork ?: return false
+        val networkInfo = connectivityManager.getNetworkCapabilities(networkCapabilities) ?: return false
+
+        return networkInfo.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) ||
+                networkInfo.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) ||
+                networkInfo.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) ||
+                networkInfo.hasTransport(NetworkCapabilities.TRANSPORT_VPN)
+    }
+    return false
+}
+fun Context.createAlertDialog(
+    title: String,
+    message: String,
+    positiveText: String,
+    negativeText: String,
+    positiveButtonListener: () -> Unit,
+    negativeButtonListener: (() -> Unit) = {  }
+) {
+    val alertDialogBuilder = AlertDialog.Builder(this)
+
+    alertDialogBuilder.apply {
+        setTitle(title)
+        setMessage(message)
+        setPositiveButton(positiveText) { _, _ ->
+            positiveButtonListener.invoke()
+        }
+        setNegativeButton(negativeText) { _, _ ->
+            negativeButtonListener.invoke()
+        }
+    }
+
+    val alertDialog = alertDialogBuilder.create()
+    alertDialog.show()
 }

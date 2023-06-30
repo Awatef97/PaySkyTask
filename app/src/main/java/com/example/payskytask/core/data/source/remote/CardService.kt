@@ -15,7 +15,7 @@ interface CardService {
     @POST("rechargeCardEndpoint")
     suspend fun rechargeCard(
         @Query("cardNumber") cardNumber: String,
-        @Query("balance") balance: Float
+        @Query("balance") balance: Double
     )
 
     @POST("removeCardEndpoint")

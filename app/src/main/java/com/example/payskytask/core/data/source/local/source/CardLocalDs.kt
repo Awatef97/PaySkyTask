@@ -11,8 +11,8 @@ class CardLocalDs @Inject constructor(
     suspend fun insertCard(cardDto: CardDto) =
         paySkyTaskDatabase.cardDao().insertCard(cardDto)
 
-    suspend fun rechargeCard(cardNumber: String, balance: Float) =
-        paySkyTaskDatabase.cardDao().rechargeCard(cardNumber = cardNumber, balance = balance)
+    suspend fun rechargeCard(cardNumber: String, amount: Double) =
+        paySkyTaskDatabase.cardDao().rechargeCard(cardNumber = cardNumber, balance = amount)
 
     suspend fun removeCard(cardNumber: String) =
         paySkyTaskDatabase.cardDao().removeCard(cardNumber = cardNumber)
