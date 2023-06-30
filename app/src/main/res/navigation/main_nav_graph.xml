@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/cardsListFragment">
+
+    <fragment
+        android:id="@+id/cardsListFragment"
+        android:name="com.example.payskytask.modules.cards.cards_list.presentation.view.CardsListFragment"
+        android:label="CardsListFragment" >
+        <action
+            android:id="@+id/action_cardsListFragment_to_addCardDetailsFragment"
+            app:destination="@id/addCardDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addCardDetailsFragment"
+        android:name="com.example.payskytask.modules.cards.add_card.presentation.view.AddCardDetailsFragment"
+        android:label="AddCardDetailsFragment" />
+</navigation>

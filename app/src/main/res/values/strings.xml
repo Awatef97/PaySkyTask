@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">PaySkyTask</string>
+    <string name="label_add_card_details">Add Card Details</string>
+    <string name="label_card_number">Card Number</string>
+    <string name="label_card_holder_name">Card Holder Name</string>
+    <string name="label_expiration_date">MM/YY</string>
+    <string name="label_cvv">CVV</string>
+    <string name="label_add_card">ADD CARD</string>
+    <string name="msg_card_number_error">Card number must be 16 digits</string>
+    <string name="msg_card_holder_error">Card Holder mustn\'t be empty</string>
+    <string name="msg_expire_date">expire date is not valid</string>
+    <string name="msg_cvv_error">cvv must be 3 digit</string>
+    <string name="msg_some_thing_wrong">some thing went wrong</string>
+    <string name="msg_no_internet_conection">No Internet Connection</string>
+    <string name="msg_card_is_add">Card is added successfully</string>
+    <string name="msg_some_thing_wrong_add_new_card">some thing went wrong.\nplease add new card </string>
+    <string name="label_retry">Retry</string>
 </resources>
