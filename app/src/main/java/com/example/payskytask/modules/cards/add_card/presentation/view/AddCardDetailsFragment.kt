@@ -1,5 +1,7 @@
 package com.example.payskytask.modules.cards.add_card.presentation.view
 
+import android.annotation.SuppressLint
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -7,17 +9,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.payskytask.R
+import com.example.payskytask.core.extension.checkScannedCardNumber
 import com.example.payskytask.core.extension.detectCardType
 import com.example.payskytask.core.extension.getCardLogoResource
 import com.example.payskytask.databinding.FragmentAddCardDetailsBinding
 import com.example.payskytask.modules.cards.add_card.presentation.uimodel.AddCardDetailsUIModel
 import com.example.payskytask.modules.cards.add_card.presentation.viewmodel.AddCardDetailsViewModel
 import com.example.payskytask.modules.cards.core.domain.CardEntity
+import com.google.firebase.ml.vision.FirebaseVision
+import com.google.firebase.ml.vision.common.FirebaseVisionImage
 import dagger.hilt.android.AndroidEntryPoint
 import drawableToString
 import handleVisibility
@@ -28,6 +34,7 @@ import validateExpiryDate
 class AddCardDetailsFragment: Fragment() {
     private  lateinit var binding: FragmentAddCardDetailsBinding
     private val addCardViewModel: AddCardDetailsViewModel by viewModels ()
+    private var isScanFrameVisible: Boolean = true
 
 
     override fun onCreateView(
@@ -46,6 +53,14 @@ class AddCardDetailsFragment: Fragment() {
         initListener()
         setUpViews()
         initObservation()
+    }
+    override fun onResume() {
+        visibleScanner(false)
+        super.onResume()
+    }
+    override fun onPause() {
+        visibleScanner(false)
+        super.onPause()
     }
 
     private fun initObservation() = with(addCardViewModel) {
@@ -88,19 +103,73 @@ class AddCardDetailsFragment: Fragment() {
         })
 
     }
-    private fun initListener(){
+    @SuppressLint("ClickableViewAccessibility")
+    private fun initListener() {
         binding.btnAddCard.setOnClickListener {
-         addCardViewModel.addCard(
-             CardEntity(
-                 cardNumber = binding.etCardNumber.text.toString(),
-                 cardHolder = binding.etCardHolder.text.toString(),
-                 expireDate = binding.etExpiration.text.toString(),
-                 logo = binding.ivLogo.drawable.drawableToString(),
-                 cvv = binding.etCvv.text.toString()
-             )
-         )
+
+            addCardViewModel.addCard(
+                CardEntity(
+                    cardNumber = binding.etCardNumber.text.toString(),
+                    cardHolder = binding.etCardHolder.text.toString(),
+                    expireDate = binding.etExpiration.text.toString(),
+                    logo = binding.ivLogo.drawable.drawableToString(),
+                    cvv = binding.etCvv.text.toString()
+                )
+            )
+        }
+
+        binding.ivScan.setOnClickListener {
+            visibleScanner(isScanFrameVisible)
+        }
+
+        binding.btnScan.setOnClickListener {
+            binding.viewScan.captureImage { cameraKitImage ->
+                getCardDetailsFromDevice(cameraKitImage.bitmap)
+            }
+        }
+
+    }
+    private fun visibleScanner(isVisible: Boolean){
+        if (isVisible){
+            binding.viewScan.visibility = View.VISIBLE
+            binding.btnScan.visibility = View.VISIBLE
+            binding.viewScan.start()
+            isScanFrameVisible = false
+        }
+        else{
+            binding.viewScan.visibility = View.GONE
+            binding.btnScan.visibility = View.GONE
+            binding.viewScan.stop()
+            isScanFrameVisible = true
         }
     }
 
+    private fun getCardDetailsFromDevice(bitmap: Bitmap) {
+        val image = FirebaseVisionImage.fromBitmap(bitmap)
+        val firebaseVisionTextDetector = FirebaseVision.getInstance().onDeviceTextRecognizer
 
+        firebaseVisionTextDetector.processImage(image)
+            .addOnSuccessListener {
+                val words = it.text.split("\n")
+                for (word in words) {
+                    if (word.checkScannedCardNumber()) {
+                        binding.etCardNumber.setText(word.replace(" ",""))
+
+                        binding.ivLogo.setImageResource(word.substring(0,2).detectCardType().getCardLogoResource())
+                    }
+                    if (word.contains("/")) {
+                        for (year in word.split(" ")) {
+                            if (year.contains("/"))
+                            binding.etExpiration.setText(year)
+                        }
+                    }
+                }
+            }
+            .addOnFailureListener {
+                Toast.makeText(requireContext(), getString(R.string.msg_some_thing_wrong), Toast.LENGTH_SHORT).show()
+            }
+            .addOnCompleteListener {
+
+            }
+    }
 }

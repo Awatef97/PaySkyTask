@@ -5,6 +5,7 @@ plugins {
     kotlin("kapt")
     id ("dagger.hilt.android.plugin")
     id("androidx.navigation.safeargs.kotlin")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -84,5 +85,11 @@ dependencies {
     implementation(Lifecycle.runtimeLifeCycle)
     implementation(Lifecycle.livedataLifeCycle)
     implementation(Lifecycle.viewModelLifeCycle)
+
+    //Firebase
+    implementation(platform(Firebase.firebaseBom))
+    //implementation(Firebase.analytics)
+    implementation(Firebase.mlVision)
+    implementation (Utils.cameraKit)
 
 }

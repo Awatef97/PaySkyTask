@@ -35,3 +35,10 @@ fun String.base64ToDrawable(): Drawable? {
     }
     return null
 }
+
+fun String.checkScannedCardNumber(): Boolean{
+   return this.replace(" ", "").matches(Regex("^5[1-5][0-9]{14}\$")) ||
+        this.replace(" ", "").matches(Regex("^5[0-9]{15}\$"))||
+        this.replace(" ", "").matches(Regex("^4[0-9]{12}(?:[0-9]{3})?\$"))
+
+}

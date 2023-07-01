@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "955928607758",
+    "project_id": "payskytask-6e30c",
+    "storage_bucket": "payskytask-6e30c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:955928607758:android:04090153a2513f55cb105f",
+        "android_client_info": {
+          "package_name": "com.example.payskytask"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "955928607758-mk10p1p079oeob01t7rnvoml6bluosbn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9UsMgl-7TDqs47cJOpGUdtHeAZMEBgow"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "955928607758-mk10p1p079oeob01t7rnvoml6bluosbn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
