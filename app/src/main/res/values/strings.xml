@@ -23,4 +23,9 @@
     <string name="label_cancel">CANCEL</string>
     <string name="label_balance">balance</string>
     <string name="label_expiration_date_text">Expire Date</string>
+    <string name="label_add_recharge_amount">Add Recharge Amount</string>
+    <string name="recharge_amount_hint">enter amount in range 10.00 EGP to 9,999.00 EGP</string>
+    <string name="label_recharge">Recharge</string>
+    <string name="msg_failed_to_add_amount">failed to add amount, please try again</string>
+    <string name="msg_amount_added">Amount Added Successfully</string>
 </resources>

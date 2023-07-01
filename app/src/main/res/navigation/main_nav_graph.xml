@@ -11,9 +11,21 @@
         <action
             android:id="@+id/action_cardsListFragment_to_addCardDetailsFragment"
             app:destination="@id/addCardDetailsFragment" />
+        <action
+            android:id="@+id/action_cardsListFragment_to_rechargeAmountDialogFragment"
+            app:destination="@id/rechargeAmountDialogFragment" />
     </fragment>
     <fragment
         android:id="@+id/addCardDetailsFragment"
         android:name="com.example.payskytask.modules.cards.add_card.presentation.view.AddCardDetailsFragment"
-        android:label="AddCardDetailsFragment" />
+        android:label="AddCardDetailsFragment" >
+    </fragment>
+    <dialog
+        android:id="@+id/rechargeAmountDialogFragment"
+        android:name="com.example.payskytask.modules.cards.recharge_card.presentation.view.RechargeAmountDialogFragment"
+        android:label="RechargeAmountDialogFragment" >
+        <argument
+            android:name="card_number"
+            app:argType="string" />
+    </dialog>
 </navigation>

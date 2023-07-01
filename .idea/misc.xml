@@ -3,11 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/PaySkyTask/app/src/main/res/drawable/bg_outline_button.xml" value="0.1" />
         <entry key="..\:/PaySkyTask/app/src/main/res/drawable/ic_add.xml" value="0.1" />
         <entry key="..\:/PaySkyTask/app/src/main/res/drawable/ic_add_card.xml" value="0.1065" />
+        <entry key="..\:/PaySkyTask/app/src/main/res/drawable/ic_close.xml" value="0.1" />
         <entry key="..\:/PaySkyTask/app/src/main/res/drawable/ic_retry.xml" value="0.1" />
         <entry key="..\:/PaySkyTask/app/src/main/res/layout/activity_home.xml" value="0.20416666666666666" />
         <entry key="..\:/PaySkyTask/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/PaySkyTask/app/src/main/res/layout/dialog_fragment_recharge.xml" value="0.20416666666666666" />
         <entry key="..\:/PaySkyTask/app/src/main/res/layout/fragment_add_card_details.xml" value="0.20416666666666666" />
         <entry key="..\:/PaySkyTask/app/src/main/res/layout/fragment_cards_list.xml" value="0.20416666666666666" />
         <entry key="..\:/PaySkyTask/app/src/main/res/layout/item_card_list.xml" value="0.20416666666666666" />

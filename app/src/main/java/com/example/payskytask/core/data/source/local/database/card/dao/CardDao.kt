@@ -13,7 +13,7 @@ interface CardDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertCard(cardDto: CardDto)
 
-    @Query("UPDATE $CARD_TABLE SET balance = :balance WHERE card_number = :cardNumber ")
+    @Query("UPDATE $CARD_TABLE SET balance = balance + :balance WHERE card_number = :cardNumber ")
     suspend fun rechargeCard(cardNumber: String, balance: Double)
 
     @Query("DELETE FROM $CARD_TABLE where card_number = :cardNumber")

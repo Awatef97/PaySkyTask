@@ -11,9 +11,9 @@ import com.example.payskytask.R
 import com.example.payskytask.databinding.FragmentCardsListBinding
 import com.example.payskytask.modules.cards.cards_list.presentation.view.uimodel.CardListUIModel
 import com.example.payskytask.modules.cards.cards_list.presentation.viewmodel.CardsListViewModel
+import createAlertDialog
 import dagger.hilt.android.AndroidEntryPoint
 import handleVisibility
-import createAlertDialog
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -85,6 +85,14 @@ class CardsListFragment: Fragment() {
                 } ,
             )
         }
+        cardsListAdapter.onItemClickedRechargeAmount = { cardNumber ->
+            findNavController().navigate(
+                CardsListFragmentDirections.actionCardsListFragmentToRechargeAmountDialogFragment(
+                    cardNumber = cardNumber
+                )
+            )
+        }
+
         binding.btnRetry.setOnClickListener { getAllCardsList() }
     }
     private fun initRecyclerView() {
